@@ -16,7 +16,7 @@ app.use(cors())
 app.use('/', naprouter)
 app.use('/', ruttienrouter)
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3500
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private')
@@ -25,8 +25,8 @@ app.use((req, res, next) => {
 
 app.listen(port, () => {
   try {
-    console.log('kết nối thành công 8080')
+    console.log('kết nối thành công 3500')
   } catch (error) {
-    console.log('kết nối thất bại 8080', error)
+    console.log('kết nối thất bại 3500', error)
   }
 })
