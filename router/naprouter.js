@@ -1,13 +1,15 @@
 const router = require('express').Router()
 const axios = require('axios')
 const crypto = require('crypto')
+require('dotenv').config()
 
-const PartnerCode = 'hyn8'
-const partnerKey = '11bacbaff2ebb77d603deddf57f4d588'
+const PartnerCode = process.env.PARTNER_CODE
+const partnerKey = process.env.PARTNER_KEY
 
 router.post('/naptienbank', async (req, res) => {
   try {
     const { BankCode, RefCode, Amount, CallbackUrl } = req.body
+    console.log(req.body)
     const rawString =
       PartnerCode + BankCode + Amount + RefCode + CallbackUrl + partnerKey
     const hash = crypto.createHash('md5').update(rawString).digest('hex')
@@ -22,6 +24,7 @@ router.post('/naptienbank', async (req, res) => {
         Signature: hash
       }
     )
+
     if (response.status === 200) {
       res.json(response.data)
     } else {
