@@ -2,8 +2,8 @@ const router = require('express').Router()
 const axios = require('axios')
 const crypto = require('crypto')
 
-const PartnerCode = 'hyn7'
-const partnerKey = 'f74f2be59d5e6c4f8bf23bbed950317b'
+const PartnerCode = 'hyn8'
+const partnerKey = '11bacbaff2ebb77d603deddf57f4d588'
 
 router.post('/naptienbank', async (req, res) => {
   try {
@@ -48,6 +48,7 @@ router.post('/callback', async (req, res) => {
       console.log('Giao dịch thất bại')
       return res.json({ message: 'thất bại' })
     }
+    console.log(ResponseContent)
     console.log('Giao dịch thành công')
     res.send('Callback xử lý thành công!')
   } catch (error) {
