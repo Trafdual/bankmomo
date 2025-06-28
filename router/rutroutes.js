@@ -2,8 +2,8 @@ const router = require('express').Router()
 const axios = require('axios')
 const crypto = require('crypto')
 
-const PartnerCode = 'hyn8'
-const partnerKey = '11bacbaff2ebb77d603deddf57f4d588'
+const PartnerCode = process.env.PARTNER_CODE
+const partnerKey = process.env.PARTNER_KEY
 
 router.post('/ruttienbank', async (req, res) => {
   try {
